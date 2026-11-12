@@ -6,8 +6,8 @@ class Sticky < Formula
 
   desc "Explain why macOS keeps asking for permissions, and make them stick"
   homepage "https://github.com/amansriven/Sticky"
-  url "https://github.com/amansriven/Sticky/archive/refs/tags/v0.1.1.tar.gz"
-  sha256 "7e2c4d841cef959d049093ac88751a9677aadba6e815dfc2e10703b92952ca17"
+  url "https://github.com/amansriven/Sticky/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "2a0b98b59397559c4e5c76814e0a678d875797c7f30c539745283dac11639351"
   license "MIT"
 
   depends_on :macos
@@ -36,5 +36,7 @@ class Sticky < Formula
     (testpath/"empty.ndjson").write ""
     assert_match "0 requests", shell_output("#{bin}/sticky parse #{testpath}/empty.ndjson 2>&1")
     assert_match "apple", shell_output("#{bin}/sticky inspect /System/Applications/TextEdit.app")
+    ENV["STICKY_DB"] = testpath/"sticky.db"
+    assert_match '"problems": []', shell_output("#{bin}/sticky report --since all")
   end
 end
