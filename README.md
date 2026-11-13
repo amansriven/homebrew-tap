@@ -1,11 +1,15 @@
 # amansriven/homebrew-tap
 
+Command line only:
+
 ```bash
 brew install amansriven/tap/sticky
 ```
 
+The Mac app and the command line (name both, so Homebrew trusts both):
+
 ```bash
-brew install --cask amansriven/tap/sticky-app
+brew install amansriven/tap/sticky amansriven/tap/sticky-app
 ```
 
 | Name | Type | What it does |
